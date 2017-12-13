@@ -10,33 +10,34 @@ body {
     padding-bottom: 7rem;
     color: aliceblue;
 }
-.back1
+#back1
 {
     padding: 2rem;
     background-color: #384B5C;
     height:auto;
     border-radius: 4px 0 0 4px;
 }
-.back1 h2
+#back1 h2
 {
     margin-top: 1em;
     letter-spacing: 2px;
+    margin-bottom: 236px;
     
 }
-.back1 h3
+#back1 h3
 {
     
     letter-spacing: 2px;
   
 }
-.back1 p
+#back1 p
 {
     color: #E4E6E6;
     
     margin-top: 60%;
 }
 
-.back2
+#back2
 {
     
     background-color: #304150;
@@ -44,7 +45,7 @@ body {
     border-radius: 0 4px 4px 0;
     padding-top: 37px;
 }
-.back2 input
+#back2 input
 {
    
     background-color: #304150;
@@ -52,25 +53,25 @@ body {
     
     
 }
-.back2 .input-group
+#back2 .input-group
 {
    
    padding: 25px;
     
 }
-.back2 .input-group-addon
+#back2 .input-group-addon
 {
    
   background-color: #1d2733;
     color: #bdb5b5;
 }
-.back2 .checkbox
+#back2 .checkbox
 {
    
   padding: 0px 25px 25px 25px;
      
 }
-.back2 button
+#back2 button
 {
    
   background-color: rgba(50, 172, 237, 0.2);
@@ -85,7 +86,7 @@ body {
   transition: all .9s linear;
   font-size: 14px;    
 }
-.back2 button:hover
+#back2 button:hover
 {
    
   background-color: rgba(240, 250, 255, 0.1);
