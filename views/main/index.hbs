@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to Synergy</h1>
+        <p>This demonstrates a form with Node.js</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="/submit-proposal" method="post" role="form" enctype="application/x-www-form-urlencoded">
+                <legend>Enter Project Information Here</legend>
+
+                <div class="form-group">
+                    <label for="projectName">Project Title</label>
+                    <input type="text" class="form-control" name="projectName" id="projectName" placeholder="Enter project title here">
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="projectType">Project Type</label>
+                        <select class="form-control" id="projectType" name="projectType">
+                            <option value="Web Application">Web Application</option>
+                            <option value="Mobile Application">Mobile Application</option>
+                            <option value="Theisi">Thesis</option>
+                            <option value="Moblie Game Development">Moblie Game Development</option>
+                            <option value="Game Development">Game Development</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectTools">Requirement Tools</label>
+                    <input type="text" class="form-control" name="projectTools" id="projectTools" placeholder="Enter tools">
+                </div>
+                <div class="form-group">
+                    <label for="projectSummary">Project Details</label>
+                    <textarea class="form-control" rows="3" id="projectSummary" name="projectSummary" placeholder="Enter details"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="memberName">Full Name</label>
+                    <input type="text" class="form-control" name="memberName[]" id="memberName" placeholder="Enter full name.">
+                </div>
+                <div class="form-group">
+                    <label for="member_id">ID Number</label>
+                    <input type="text" class="form-control" id="member_id" name="memberId[]" placeholder="Enter your id">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" name="memberEmail[]" placeholder="Email Address">
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="memberName">Full Name</label>
+                    <input type="text" class="form-control" name="memberName[]" id="memberName" placeholder="Enter full name.">
+                </div>
+                <div class="form-group">
+                    <label for="member_id">ID Number</label>
+                    <input type="text" class="form-control" id="member_id" name="memberId[]" placeholder="Enter your id">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" name="memberEmail[]" placeholder="Email Address">
+                </div>
+               
+                <br><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

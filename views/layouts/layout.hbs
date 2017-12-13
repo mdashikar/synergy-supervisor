@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Ubuntu" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+      
+
+
+       <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Spectral+SC" rel="stylesheet"> 
+        <!--<link rel='stylesheet' href='/css/custom.css' /> -->
+        <link rel="stylesheet" href="/css/styletrello.css">
+        <link rel="stylesheet" href="/css/styleform2.css">
+        <link rel="stylesheet" href="/css/style-admin.css">
+        <!--<link rel="stylesheet" href="/css/style.css"> -->
+  </head>
+  <body>
+    {{{body}}}
+
+
+
+ <!---------------------------------Javascript--------------------------------->
+        <script src="https://code.jquery.com/jquery-3.2.1.js"
+              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+              crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.backstretch.min.js"></script>
+        <script src="/js/retina-1.1.0.min.js"></script>
+        <script src="/js/scripts.js"></script> 
+        
+                  
+                            
+                                      
+                                                          
+<!------------------------------------Text editor--------------------------------->
+        <script src="/js/editor.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#txtEditor").Editor();
+			});
+		</script>
+              
+           
+<!--------------------------Add and Remove child------------------------------->
+           
+    <script type="text/javascript">
+       $(document).ready(function() {
+       
+        $("button[name='addDom']").click(function() {
+            
+            var domElement = $('<div class="child"><div class="row "><hr><div class="col-md-12"><div class="form-group"><label class="sr-only" for="f1-first-name">Full Name</label> <input type="text" name="f1-first-name" placeholder="Full name" class="f1-first-name form-control" id="f1-first-name"></div><div class="form-group"><label class="sr-only" for="f1-email">Email</label><input type="text" name="f1-email" placeholder="Email" class="f1-email form-control" id="f1-email"></div><div class="form-group"><label class="sr-only" for="f1-number">Id</label><input type="number" name="f1-email" placeholder="Id" class="f1-email form-control" id="f1-email"></div><br></div</div></div><br><div class="col-md-12"><button class="removeChild btn btn-danger" >Remove Child</button></div><hr></div>');
+       
+       $(this).after(domElement);
+        });
+       $(document).on('click','button.removeChild',function(){
+         $(this).closest('div.child').remove();
+       });
+    
+});
+    </script>
+  </body>
+</html>
