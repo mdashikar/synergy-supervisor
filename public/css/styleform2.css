@@ -110,3 +110,11 @@ p
     
 }
 
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .back1 h2
+    {
+       
+        margin-bottom: 152px;
+        
+    }
+}
