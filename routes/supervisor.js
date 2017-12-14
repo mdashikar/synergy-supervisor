@@ -3,11 +3,42 @@ const passport = require('passport');
 const randomstring = require('randomstring');
 const passportConfig = require('../config/passport');
 const Supervisor = require('../models/supervisor');
+const Invite = require('../models/invite');
 //const mailer = require('../misc/mailer');
 
-router.route('/signup-supervisor')
+var value = "hi";
+
+router.route('/signup-supervisor/:secretToken')
     .get( (req, res, next) => {
-        res.render('accounts/signup-supervisor', {message : req.flash('errors')});
+        
+        const {secretToken} = req.params;
+        if(secretToken != value)
+        {
+            var invite = Invite.findOne({'secretToken' : secretToken.trim()}).then((invite) => 
+            {      
+                    if(!invite)
+                    {
+                        req.flash('errors', 'No user found');
+                        //res.redirect('/users/verify-error');
+                        res.render('errors');
+                        return;
+                    }
+            
+                    
+                    invite.secretToken = '';
+                    invite.save();
+                    res.render('accounts/signup-supervisor', {message : req.flash('errors')});
+                    
+                    value = secretToken;
+                
+            });
+        }
+        else
+        {
+            req.flash('errors','Link already used');
+            //res.redirect('/users/login');
+            res.render('errors');
+        }
     })
     .post((req, res, next) => 
     {
