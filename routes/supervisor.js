@@ -8,8 +8,7 @@ const Invite = require('../models/invite');
 
 var value = "hi";
 
-router.route('/signup-supervisor/:secretToken')
-    .get( (req, res, next) => {
+router.get('/signup-supervisor/:secretToken', (req, res, next) => {
         
         const {secretToken} = req.params;
         if(secretToken != value)
@@ -40,7 +39,7 @@ router.route('/signup-supervisor/:secretToken')
             res.render('errors');
         }
     })
-    .post((req, res, next) => 
+router.post('/signup-supervisor',(req, res, next) => 
     {
         Supervisor.findOne({email: req.body.email}, function(err, existingUser){
            if(existingUser){

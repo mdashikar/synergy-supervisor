@@ -20,7 +20,7 @@ const sessionStore = new MongoStore({url: config.database, autoReconnect: true})
 mongoose.connect(config.database, function(err){
     if(err) console.log(err);
     console.log('Connected to DB');
-})
+});
 
 const app = express();
 const http = require('http').Server(app);
