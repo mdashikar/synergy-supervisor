@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Supervisor = require('../models/supervisor');
 const _ = require('lodash');
 const {ProjectSubmit} = require('../models/proposals');
+const RegisteredStudent = require('../models/registered_user');
 // var template = require('../server/template');
 // var upload = require('../server/upload');
 const async = require('async');
@@ -21,7 +22,7 @@ router.get('/', (req, res, next) => {
 
 router.route('/submit-proposal')
     .get( (req, res, next) => {
-        res.render('main/proposal_form', { title: 'Proposal Submit'});
+        res.render('main/index', { title: 'Proposal Submit'});
     })
     .post((req, res, next) => {
         var projectSubmit = new ProjectSubmit({
