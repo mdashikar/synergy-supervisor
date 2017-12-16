@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
 
 router.route('/submit-proposal')
     .get( (req, res, next) => {
-        res.render('main/index', { title: 'Proposal Submit'});
+        res.render('main/proposal_form', { title: 'Proposal Submit'});
     })
     .post((req, res, next) => {
         var projectSubmit = new ProjectSubmit({
@@ -46,7 +46,8 @@ router.route('/submit-proposal')
             }
             projectSubmit.save().then((doc) => {
                 //res.send(doc);
-                res.status(200).send('welcome', doc);
+              //  res.status(200).send('welcome', doc);
+                res.redirect('/submit-proposal');
                 console.log('In saving page');
                //res.render('projectList', doc);
            }, (e) => {
