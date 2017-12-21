@@ -10,14 +10,21 @@ const async = require('async');
 router.get('/', (req, res, next) => {
     if(req.user){
         let user = req.user;
-        ProjectSubmit.find({'_id': user.proposals}).then((projectSubmit) => {
-            res.render('main/welcome', { title: 'Proposal Submit', projectSubmit: projectSubmit});            
+        ProjectSubmit.find({'_id': user.proposals}).then((projects) => {
+            res.render('main/welcome', { title: 'Proposal Submit', projects: projects});            
         });
     }else{
         res.render('accounts/login-supervisor', { title: 'Login'});
     }
 });
 
+router.get('/boards', (req, res, next) => {
+   if(req.user){
+       res.render('main/boards', {title: 'Project Boards'});
+   }else{
+    res.render('accounts/login-supervisor', { title: 'Login'});
+   }
+});
 
 
 router.route('/submit-proposal')
