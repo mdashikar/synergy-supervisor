@@ -89,7 +89,11 @@ app.use( function(req, res, next){
 const mainroutes = require('../routes/main');
 const supervisorroutes = require('../routes/supervisor');
 
-//require('../realtime/io')(io);
+require('../realtime/io')(io);
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+ });
 
 app.use(mainroutes);
 app.use(supervisorroutes);
