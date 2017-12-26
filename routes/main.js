@@ -18,6 +18,11 @@ router.get('/', (req, res, next) => {
     }
 });
 
+<<<<<<< HEAD
+router.get('/test', (req, res) => {
+    res.render('test');
+});
+=======
 router.get('/boards', (req, res, next) => {
    if(req.user){
        res.render('main/boards', {title: 'Project Boards'});
@@ -26,6 +31,7 @@ router.get('/boards', (req, res, next) => {
    }
 });
 
+>>>>>>> 5d8aac8b82f5bd4098271db8eee99e85f7f45d5a
 
 router.route('/submit-proposal')
     .get( (req, res, next) => {

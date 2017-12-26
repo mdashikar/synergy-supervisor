@@ -1,0 +1,27 @@
+/***************Log In****************/
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .login h2
+    {
+       
+       padding-bottom: 3.9% !important;
+        
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .login .input-group {
+    padding: 6.2% !important;
+}
+}
+
+/***************Sign Up****************/
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .signup h2
+    {
+       
+       padding-bottom: 51.5% !important;
+        
+    }
+}
