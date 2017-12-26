@@ -18,7 +18,9 @@ router.get('/', (req, res, next) => {
     }
 });
 
-
+router.get('/test', (req, res) => {
+    res.render('test');
+});
 
 router.route('/submit-proposal')
     .get( (req, res, next) => {

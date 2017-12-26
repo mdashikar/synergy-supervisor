@@ -7,25 +7,18 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Ubuntu" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
       
-
-        <!-- Include Editor style. -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
-         <!-- CSS --> 
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <!-- CDN -->
+        
+		    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- CSS -->
         <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-		    <link rel="stylesheet" href="/css/form-elements.css">
-        <link rel="stylesheet" href="/css/proposal_form.css">
-        <link rel="stylesheet" href="/css/styleproposal.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand|Ubuntu" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato|Spectral+SC" rel="stylesheet"> 
-        <!--<link rel='stylesheet' href='/css/custom.css' /> -->
-        <link rel="stylesheet" href="/css/styletrello.css">
-        <link rel="stylesheet" href="/css/styleform2.css">
-        <link rel="stylesheet" href="/css/styleform.css">
-        <link rel="stylesheet" href="/css/style-admin.css">
-        <!--<link rel="stylesheet" href="/css/style.css"> -->
+        <link rel="stylesheet" href="/css/animate.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/responsive.css">
+        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     {{{body}}}
@@ -38,44 +31,21 @@
               crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
              
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- Text editor-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/froala_editor.pkgd.min.js"></script>
-        <script src="assets/js/scripts.js"></script>    
         
-        
-                  
-                            
-                                      
-                                                          
-<!-- Text editor-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/froala_editor.pkgd.min.js"></script>
-        <script src="/js/scripts.js"></script>    
-        
-                 
- 
-<!----------------------Initialize the editor.--------------------->
-    
-    <script> $(function() { $('#editor').froalaEditor() }); </script>                                   
-        
-<!------------------------Add and Remove child---------------------------->
-    <script type="text/javascript">
-       $(document).ready(function() {
-       
-        $("button[name='addDom']").click(function() {
-            
-            var domElement = $('<div class="child"><div class="row "><hr><div class="col-md-12"><div class="form-group"><label class="sr-only" for="f1-first-name">Full Name</label> <input type="text" name="memberName[]" placeholder="Full name" class="f1-first-name form-control" id="f1-first-name"></div><div class="form-group"><label class="sr-only" for="f1-email">Email</label><input type="text" name="memberEmail[]" placeholder="Email" class="f1-email form-control" id="f1-email"></div><div class="form-group"><label class="sr-only" for="f1-number">Id</label><input type="number" name="memberId[]" placeholder="Id" class="f1-email form-control" id="f1-email"></div><br></div</div></div><br><div class="col-md-12"><button class="removeChild btn btn-danger" >Remove Member</button></div><hr></div>');
-       
-       $(this).after(domElement);
-        });
-       $(document).on('click','button.removeChild',function(){
-         $(this).closest('div.child').remove();
-       });
-    
-});
+
+<!-----------------------------------Script file----------------------------->
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-----------------------------------Side bar (board)----------------------------->
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "300px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
     </script>
   </body>
 </html>
