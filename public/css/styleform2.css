@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #1D2733;
+}
+h1,h2,h3,h4,h5,h6
+{
+     font-family: 'Roboto', sans-serif;
+}
+p
+{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+.back_color
+{
+    background-color: #1D2733;
+    padding-top: 13%;
+    padding-bottom: 12%;
+    color: aliceblue;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.back1
+{
+    padding: 2rem;
+    background-color: #384B5C;
+    height:auto;
+    border-radius: 4px 0 0 4px;
+}
+.back1 h2
+{
+    margin-top: 1em;
+    letter-spacing: 2px;
+    
+}
+.back1 h3
+{
+    
+    letter-spacing: 2px;
+   
+}
+.back1 p
+{
+    color: #E4E6E6;
+    margin-top: 60%;
+  
+}
+
+.back2
+{
+    
+    background-color: #304150;
+    height: auto;
+    border-radius: 0 4px 4px 0;
+    padding-top: 69px;
+}
+.back2 input
+{
+   
+    background-color: #304150;
+    color: white;
+    height: 45px;
+    
+}
+.back2 .input-group
+{
+   
+   padding: 25px;
+    
+}
+.back2 .input-group-addon
+{
+   
+  background-color: #1d2733;
+    color: #bdb5b5;
+}
+.back2 .checkbox
+{
+   
+  padding: 20px 25px 25px 25px;
+   
+}
+.back2 button
+{
+   
+  background-color: rgba(50, 172, 237, 0.2);
+  width: 100%;
+  border: none;
+  border-radius: 0px;
+  height: 47px; 
+  color: #E4E6E6;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .9s linear;
+  font-size: 14px;    
+}
+.back2 button:hover
+{
+   
+  background-color: rgba(240, 250, 255, 0.1);
+  transition: all .9s linear;
+  color:#E4E6E6;
+}
+.already_account h4
+{
+    margin-top: 5%;
+    
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .back1 h2
+    {
+       
+        margin-bottom: 152px;
+        
+    }
+}

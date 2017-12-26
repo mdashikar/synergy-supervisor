@@ -1,0 +1,259 @@
+body {
+    
+    margin: 0px;
+}
+h1,h2,h3,h4,h5,h6
+{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+p,button
+{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+   
+    
+}
+.fluid_margin_padding
+{
+    margin-left:0% !important;
+    margin-right: 0% !important;
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+}
+/****************Navigation*******************/
+
+.navigation .navbar-inverse
+{
+    background-color:#373f46;
+    border: none;
+    border-radius: 0px;
+}
+.navigation button
+{
+    letter-spacing: 3px;
+    transition: all .9s linear;
+    font-size: 12px;
+    line-height:  1.728571;
+    color: #fff;
+    background-color: #a0969647;
+    border: none;
+    
+}
+.navigation button:hover
+{
+
+    color: #fff;
+    background-color: #a0969647;
+    border: none;   
+}
+.navigation button:focus
+{
+
+    color: #fff;
+    background-color: #a0969647;
+    border: none;   
+}
+
+.navigation .navbar
+{
+    margin-bottom: 0px;
+}
+.navbar-right .fa
+{
+    font-size: 25px; 
+    color: whitesmoke;
+}
+
+
+
+/***********drop_content**************/
+.drop_content
+{
+    width:293px;
+    padding: 10px;
+}
+.drop_content .fa
+{
+  color: black;
+  font-size: 20px;    
+}
+.drop_content p
+{
+  
+  font-size: 12px;    
+}
+.drop_content h5
+{
+  font-weight: bold;
+  letter-spacing: 2px;    
+}
+.drop_content a
+{
+    color: black;
+    text-decoration: none; 
+}
+.drop_content a:hover
+{
+   color:#1a486f;  
+}
+
+
+
+
+/***********Personal Board************/
+.board
+{
+    
+    margin-top: 5%;
+}
+.btn_wel
+{
+    background-color: #373f46;
+    color: white;
+    width: 100%;
+    height: 100px;
+}
+.btn_wel:hover
+{
+    color: white;
+}
+.btn_wel:focus
+{
+    color: white;
+}
+.board a
+{
+   color: black;
+}
+
+
+/*****************Side bar******************/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #23282d;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 16px;
+    margin-top: 4%;
+    color: #818181;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/**************Add list****************/
+.add_list 
+{
+ margin-top: 5%;
+}
+.add_list a
+{
+    color: black;
+    text-decoration: none;
+}
+
+/*********modal*********/
+.modal-content
+{
+    padding: 0px 40px 0px 40px;
+    color: black;
+    background-color:white;
+}
+.modal-header {
+  padding: 0;
+}
+.modal-header .close {
+  padding-top: 40px;
+}
+
+.modal-body .form-group {
+  margin-bottom: 10px;
+}
+
+.btn-default.contact_button 
+{
+    
+    background-color:#0000002e !important;
+    color: white;
+    letter-spacing: 3px;
+    font-size: 13px; 
+    transition: all .5s linear;
+    width: 100%;
+    border: 0px;
+    height: 40px;
+   
+}
+.contact_button:hover
+{
+    background-color:#0000002e !important;
+    font-size: 14px; 
+    color: white;
+    
+}
+.modal-content input 
+{
+    height: 50px !important;
+    color: black;
+}
+.modal-content select
+{
+    height: 50px !important;
+}
+.modal-content label
+{
+    letter-spacing: 2px;
+}
+
+element.style {
+    height: 48px !important;
+}
+
+.modal-content input {
+    height: 50px !important;
+}
+
+.modal-content input[type=file] {
+    display: block;
+    padding-top: 12px;
+}
+.modal-body a {
+    padding: 4px 4px 4px 0px;
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.modal-body a:hover {
+    color:#373f46;
+}
