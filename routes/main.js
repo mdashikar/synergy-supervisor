@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/boards', (req, res, next) => {
    if(req.user){
-       res.render('main/boards', {title: 'Project Boards'});
+       res.render('main/board', {title: 'Project Boards'});
    }else{
     res.render('accounts/login-supervisor', { title: 'Login'});
    }
