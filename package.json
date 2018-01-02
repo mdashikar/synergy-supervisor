@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "async": "^2.5.0",
+    "async": "^2.6.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "bson": "^1.0.4",
     "connect-mongo": "^2.0.0",
     "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
     "email-verification": "^0.4.6",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
@@ -23,7 +24,7 @@
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.2",
     "morgan": "^1.9.0",
-    "nodemailer": "^4.4.0",
+    "nodemailer": "^4.4.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport.socketio": "^3.7.0",
@@ -31,7 +32,6 @@
     "request": "^2.83.0",
     "socket.io": "^2.0.4",
     "validator": "^9.1.1"
-
   },
   "devDependencies": {},
   "scripts": {

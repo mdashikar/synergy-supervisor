@@ -31,7 +31,9 @@ const SupervisorSchema = new Schema ({
 
         }]
     }],
-    secretToken : {type: String}
+    secretToken : {type: String},
+    resetPasswordToken : {type : String},
+    resetPasswordExpires : {type : Date}
 });
 
 
