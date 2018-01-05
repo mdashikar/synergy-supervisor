@@ -2,7 +2,6 @@ const router = require('express').Router();
 const Supervisor = require('../models/supervisor');
 const _ = require('lodash');
 const {ProjectSubmit} = require('../models/proposals');
-const RegisteredStudent = require('../models/registered_user');
 // var template = require('../server/template');
 // var upload = require('../server/upload');
 const async = require('async');
