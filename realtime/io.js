@@ -6,38 +6,38 @@ module.exports = function(io){
         console.log('Connected');
         var user = socket.request.user;
         console.log(user);
-        //console.log(supervisor.name);
+   
 
-        // socket.on('tweet', (data)=> {
-        //     async.parallel([
-        //         function(callback){
-        //             io.emit('incommingTweet', {data, user});
-        //         },
-        //         function(callback){
-        //             async.waterfall([
-        //                 function(callback){
-        //                     var tweet = new Tweet();
-        //                     tweet.content = data.content;
-        //                     tweet.owner = user._id;
-        //                     tweet.save(function(err){
-        //                         callback(err, tweet);
-        //                     }) 
-        //                 },
-        //                 function(tweet, callback){
-        //                     User.update({
-        //                         _id : user._id
-        //                     },
-        //                     {
-        //                         $push: {tweets:{tweet: tweet._id}},
-        //                     }, function(err, count){
-        //                         callback(err, count);
-        //                     }
-        //                 )
-        //                 }
-        //             ]);
-        //         }
-        //     ]);
+        socket.on('list', (data)=> {
+            async.parallel([
+                function(callback){
+                    io.emit('incommingList', {data, user});
+                },
+                function(callback){
+                    async.waterfall([
+                        function(callback){
+                            var list = new List();
+                            list.content = data.content;
+                            list.owner = user._id;
+                            list.save(function(err){
+                                callback(err, list);
+                            }) 
+                        },
+                        function(list, callback){
+                            User.update({
+                                _id : user._id
+                            },
+                            {
+                                $push: {boards:{ list: list._id}},
+                            }, function(err, count){
+                                callback(err, count);
+                            }
+                        )
+                        }
+                    ]);
+                }
+            ]);
             
-        // });
+        });
     });
 }

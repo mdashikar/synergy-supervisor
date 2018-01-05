@@ -25,43 +25,6 @@ router.get('/boards', (req, res, next) => {
     res.render('accounts/login-supervisor', { title: 'Login'});
    }
 });
-
-
-router.route('/submit-proposal')
-    .get( (req, res, next) => {
-        res.render('main/proposal_form', { title: 'Proposal Submit'});
-    })
-    .post((req, res, next) => {
-        var projectSubmit = new ProjectSubmit({
-            projectName: req.body.projectName,
-            projectType:req.body.projectType,
-            projectTools:req.body.projectTools,
-            projectSummary:req.body.projectSummary,
-            memberName:req.body.memberName,
-            memberEmail:req.body.memberEmail,
-            memberId: req.body.memberId,
-            
-            
-        });
-        RegisteredStudent.findOne({student_id: projectSubmit.memberId}, function(err, registered)                                                                 
-        {
-            
-          //  console.log(registered.student_id +" "+ projectSubmit.memberId);
-            if(!registered)
-            {
-                return res.send(`${projectSubmit.memberId} is not registered`);
-            }
-            projectSubmit.save().then((doc) => {
-                //res.send(doc);
-              //  res.status(200).send('welcome', doc);
-                res.redirect('/submit-proposal');
-                console.log('In saving page');
-               //res.render('projectList', doc);
-           }, (e) => {
-                res.status(400).send(e);
-           });
-       });
-    });
 router.get('/demo-proposal', (req,res,next) => {
     res.render('main/demo_proposal', {title: 'Submit Proposal'});
 });

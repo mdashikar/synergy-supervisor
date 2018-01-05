@@ -13,23 +13,7 @@ const SupervisorSchema = new Schema ({
         type: String
     }],
     boards: [{
-        type: String,
-        list: [{
-            id: Schema.Types.ObjectId,
-            name: { type: String, trim: true},
-            discription: { type: String, trim: true},
-            labels: [{
-                begining : false,
-                inprogress: false,
-                completed: false
-            }],
-            dueDate: new Date,
-            comments: [{
-                id: Schema.Types.ObjectId,
-                commentBody: String
-            }]
-
-        }]
+        list: { type: Schema.Types.ObjectId, ref:'List'}
     }],
     secretToken : {type: String}
 });
