@@ -77,5 +77,12 @@ router.get('/demo-proposal', (req,res,next) => {
     res.render('main/demo_proposal', {title: 'Submit Proposal'});
 });
 
+// router.get('/test', (req,res,next) => {
+//     RegisteredStudent.find({}).then((registered) => {
+//         res.send(registered);
+
+//     });
+// });
+
 
 module.exports = router;
