@@ -5,7 +5,7 @@ const {ProjectSubmit} = require('../models/proposals');
 const passport = require('passport');
 const randomstring = require('randomstring');
 const passportConfig = require('../config/passport');
-const RegisteredStudent = require('../models/registered_user');
+//const RegisteredStudent = require('../models/registered_user');
 // var template = require('../server/template');
 // var upload = require('../server/upload');
 const async = require('async');
@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     if(req.user){
         let user = req.user;
         ProjectSubmit.find({'_id': user.proposals}).then((projects) => {
-            res.render('main/welcome', { title: 'Proposal Submit', projects: projects,
+            res.render('main/welcome', { title: 'Project Board', projects: projects,
             errorMessage: req.flash('errors'),successMessage: req.flash('success')});            
         });
     }else{
@@ -23,11 +23,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
-// router.post('/',passport.authenticate('local-login', {
-//     successRedirect: '/',
-//     failureRedirect: '/',
-//     failureFlash: true
-// }));
+
 
 router.get('/boards', (req, res, next) => {
    if(req.user){
