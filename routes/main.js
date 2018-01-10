@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     if(req.user){
         let user = req.user;
         ProjectSubmit.find({'_id': user.proposals}).then((projects) => {
-            res.render('main/welcome', { title: 'Proposal Submit', projects: projects,
+            res.render('main/welcome', { title: 'Project Board', projects: projects,
             errorMessage: req.flash('errors'),successMessage: req.flash('success')});            
         });
     }else{
@@ -23,11 +23,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
-// router.post('/',passport.authenticate('local-login', {
-//     successRedirect: '/',
-//     failureRedirect: '/',
-//     failureFlash: true
-// }));
+
 
 router.get('/boards', (req, res, next) => {
    if(req.user){
