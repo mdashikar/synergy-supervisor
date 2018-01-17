@@ -7,12 +7,18 @@ const Invite = require('../models/invite');
 const mailer = require('../misc/mailer');
 var async = require('async');
 var crypto = require('crypto');
+algorithm = 'aes-256-ctr',
+password = 'd6F3Efeq';
+var decryptedEmail;
+var emailId;
+var secretToken;
 
 var value = "hi";
 
-router.get('/signup-supervisor/:secretToken', (req, res, next) => {
+router.get('/signup-supervisor/:secretToken/:email', (req, res, next) => {
         
-        const {secretToken} = req.params;
+        secretToken = req.params.secretToken;
+        emailId = req.params.email;
         if(secretToken != value)
         {
             var invite = Invite.findOne({'secretToken' : secretToken.trim()}).then((invite) => 
@@ -24,6 +30,14 @@ router.get('/signup-supervisor/:secretToken', (req, res, next) => {
                         res.render('errors');
                         return;
                     }
+                    
+                    function decrypt(text){
+                      var decipher = crypto.createDecipher(algorithm,password)
+                      var dec = decipher.update(text,'hex','utf8')
+                      dec += decipher.final('utf8');
+                      return dec;
+                    }
+                    decryptedEmail = decrypt(emailId);
             
                     
                     invite.secretToken = '';
@@ -52,7 +66,7 @@ router.post('/signup-supervisor',(req, res, next) =>
            else{
                 var supervisor = new Supervisor();
                 supervisor.name = req.body.name;
-                supervisor.email = req.body.email;
+                supervisor.email = decryptedEmail;
                 supervisor.username = req.body.username;
                 supervisor.password = req.body.password;  
                 //user.secretToken = req.body.secretToken;            
