@@ -371,6 +371,14 @@ element.style {
 .modal-body a:hover {
     color:#373f46;
 }
+/* #disbtn
+{
+    color: black !important;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+} */
+
 #disbtn
 {
     color: black !important;
@@ -378,4 +386,18 @@ element.style {
     font-size: 20px;
     font-weight: 700;
 }
-
+.alertbox
+{
+ border-radius: 6px; 
+}
+/* profile */
+.profile
+{
+    padding:  10%;
+    color: gainsboro;
+}
+.profile label
+{
+    letter-spacing: 1px;
+    
+}
