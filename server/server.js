@@ -77,19 +77,22 @@ function onAuthorizeFail(data, message, error, accept){
 }
 
 app.use(flash());
-//Local Modules 
-
-
 
 app.use( function(req, res, next){
     res.locals.user = req.user;
     next();
 });
 
-const mainroutes = require('../routes/main');
-const supervisorroutes = require('../routes/supervisor');
+const mainroutes =require('../routes/main');
+const supervisorroutes =require('../routes/supervisor');
 
-//require('../realtime/io')(io);
+
+
+require('../realtime/io')(io);
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+});
 
 app.use(mainroutes);
 app.use(supervisorroutes);

@@ -30,35 +30,47 @@
 <!-------------------------------Welcome board---------------------------------><!---------------------------------Add list----------------------------------->
                 
     <div class="container add_list">
+        <div class="row" id="lists">
+                {{#each lists}}
+                <div class="col-md-12"></div>
+                    <div class="lists" >
+                        <div class="col-md-8">
+                            <h4>{{ content }}</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+        </div>
         <div class="row">
             <div class="col-md-3">
                  <ul class="list-unstyled">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button style=" background-color:#373f46;color:whitesmoke;" type="button" class="btn btn-block">Add a list</button></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <div class="drop_content">
-                                            
-                                            <form action="">
-                                              <div class="form-group">
-                                                <input type="text" class="form-control" id="email" placeholder="Add list">
-                                              </div>
-                                              <button type="button" class="btn btn-success">Save</button>
-                                              
-                                            </form>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button style=" background-color:#373f46;color:whitesmoke;" type="button" class="btn btn-block">Add a list</button></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <div class="drop_content">
+                                    
+                                    <form id="sendList">
+                                        <div class="form-group">
+                                        <input type="text" class="form-control" id="list" placeholder="Add list">
                                         </div>
-                                    </li>
-                                </ul>
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                        
+                                    </form>
+                                </div>
                             </li>
-                        </ul> 
-                    </div>
+                        </ul>
+                    </li>
+                </ul> 
+            </div>
                     
 <!------------------------------After add list--------------------------------->
-                    <div class="col-md-3">
-                           <button data-toggle="modal" data-target=".login-register-form" type="button" class="btn btn-success btn-block">After add list</button>
-                    </div>
-                </div>
-            </div>       
+            <div class="col-md-3">
+                    <button data-toggle="modal" data-target=".login-register-form" type="button" class="btn btn-success btn-block">After add list</button>
+            </div>
+        </div>
+    </div>       
             
 
               

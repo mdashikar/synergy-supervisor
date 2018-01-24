@@ -38,14 +38,28 @@ p,button,a,input,label
 }
 
 /*****************Log In*****************/
-.login
-{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%); 
-    color: white;
+@media screen and (max-width: 2000px) and (min-width: 768px) {
+    .login {
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);  
+        color: white;
+    }
 }
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .login {
+        margin-top: 20%; 
+        color: white;
+    }
+}
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .log_right
+        {
+           padding-top: 5.3% !important;
+        }
+}
+
 .login h2
 {
     padding-bottom: 1%;
@@ -107,17 +121,31 @@ p,button,a,input,label
 }
 
 /****************Sign Up****************/
-.signup
-{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%); 
-    color: white;
+
+@media screen and (max-width: 2000px) and (min-width: 768px) {
+    .signup {
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);  
+        color: white;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    .signup {
+        margin-top: 20%; 
+        color: white;
+    }
+}
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .sign_right
+        {
+           padding-top: 5.3% !important;
+        }
 }
 .signup h2
 {
-    padding-bottom: 59.3%;
+    padding-bottom: 31.9%;
 }
 .sign_left
 {
@@ -371,5 +399,33 @@ element.style {
 .modal-body a:hover {
     color:#373f46;
 }
+/* #disbtn
+{
+    color: black !important;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+} */
 
-
+#disbtn
+{
+    color: black !important;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.alertbox
+{
+ border-radius: 6px; 
+}
+/* profile */
+.profile
+{
+    padding:  10%;
+    color: gainsboro;
+}
+.profile label
+{
+    letter-spacing: 1px;
+    
+}

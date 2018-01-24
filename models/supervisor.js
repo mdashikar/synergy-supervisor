@@ -12,7 +12,12 @@ const SupervisorSchema = new Schema ({
     proposals: [{
         type: String
     }],
-    secretToken : {type: String}
+    boards: [{
+        list: { type: Schema.Types.ObjectId, ref:'List'}
+    }],
+    secretToken : {type: String},
+    resetPasswordToken : {type : String},
+    resetPasswordExpires : {type : Date}
 });
 
 
