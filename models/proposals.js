@@ -16,24 +16,55 @@ var ProjectSubmit = mongoose.model('ProjectSubmit', {
     supervisorName:{
         type: 'string'
     },
+    status:{
+        type: 'string'
+    },
     projectType:{
         type: 'string',
         required: true,
         minLength: 2,
         trim:true
     }, 
+    projectCourseCode: {
+        type: 'string',
+        required: true
+    },
     projectTools:{
         type: 'string',
         required: true,
         minLength: 5,
         trim:true
     },
-    projectSummary:{
+    projectAbstract:{
         type: 'string',
         required: true,
         minLength: 2,
         trim:true
     },
+    projectObject:{
+        type: 'string',
+        required: true,
+        minLength: 2,
+        trim:true
+    },
+    projectKeyFeatures:{
+        type: 'string',
+        required: true,
+        minLength: 2,
+        trim:true
+    },
+    projectNumberOfModules:{
+        type: 'string',
+        minLength: 2,
+        trim:true
+    },
+    projectConclusion:{
+        type: 'string',
+        required: true,
+        minLength: 2,
+        trim:true
+    },
+    
     memberName:[{
         type: String,
         required: true,
@@ -58,19 +89,35 @@ var ProjectSubmit = mongoose.model('ProjectSubmit', {
         minLength: 8,
         trim:true
     }],
-
-    createdAt:{
-        date: Date
-        
-    },
+    memberNumber: [{
+        type: Number,
+        required: true,
+        unique: true,
+        minLength: 10,
+        trim: true
+    }],
     pending:{
         type : Boolean,
         default : true
+    },
+    semester : {
+        type: String
+    },
+    year: {
+        type: Number
+    },
+    time: {
+        type: String
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-    // _creator: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     required:true
-    // }
+ 
+  // _creator: {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     required:true
+  // }
 });
 
 

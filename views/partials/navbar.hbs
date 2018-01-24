@@ -9,13 +9,13 @@
                         <span class="icon-bar"></span>                        
                       </button>
                       <a class="navbar-brand" href="#">
-                          <button class="btn btn-danger"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Project Proposal</button>
+                          <button class="btn btn-danger"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Update Profile</button>
                       </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                       <ul class="nav navbar-nav navbar-right">
                         
-                        
+                        {{#if user}}
                          
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus" aria-hidden="true"></i></a>
@@ -99,8 +99,8 @@
                                         </button>
                                         <p class="text-center"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;Gazi Muhammad Akil</p>
                                         <hr>
-                                        <a href="#">
-                                            <h5>Profile</h5>
+                                        <a href="/profile/{{user._id}}">
+                                            <h5>Edit Profile</h5>
                                         </a>
                                         <a href="#">
                                             <h5>Cards</h5>
@@ -126,6 +126,7 @@
                                 </li>
                             </ul>
                         </li>
+                        {{/if}}
                       </ul>
                     </div>
                 </nav>

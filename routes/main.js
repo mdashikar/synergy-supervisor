@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
     if(req.user){
         let user = req.user;
         ProjectSubmit.find({'_id': user.proposals}).then((projects) => {
+            console.log("inside: ",user.proposals);
             res.render('main/welcome', { title: 'Project Board', projects: projects,
             errorMessage: req.flash('errors'),successMessage: req.flash('success')});            
         });
