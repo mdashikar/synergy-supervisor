@@ -6,8 +6,6 @@ module.exports = function(io){
         console.log('Connected');
         var user = socket.request.user;
         console.log(user);
-   
-
         socket.on('list', (data)=> {
             async.parallel([
                 function(callback){

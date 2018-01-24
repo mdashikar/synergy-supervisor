@@ -37,6 +37,10 @@ router.get('/demo-proposal', (req,res,next) => {
     res.render('main/demo_proposal', {title: 'Submit Proposal'});
 });
 
+router.get('/board/:id', (req, res, next) => {
+    res.render('main/single_board', {title: 'Dont know'});
+});
+
 // router.get('/test', (req,res,next) => {
 //     RegisteredStudent.find({}).then((registered) => {
 //         res.send(registered);
