@@ -389,6 +389,7 @@ element.style {
 .alertbox
 {
  border-radius: 6px; 
+ margin-top: 4%;
 }
 /* profile */
 .profile
