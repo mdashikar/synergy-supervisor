@@ -38,7 +38,10 @@
                     {{#each projects}}
                         <div style="margin-bottom:2%;" class="col-md-3">
                             <a href="/board/{{this._id}}">
-                                <button type="button" class="btn btn_wel"><h4>{{this.projectName}}</h4></button>
+                                <button type="button" class="btn btn_wel"><h4>{{this.projectName}}</h4> <span>
+                                     Total Members: {{this.memberId.length}}
+                                </span></button>
+                                
                             </a>    
                         </div>
                     {{/each}}
