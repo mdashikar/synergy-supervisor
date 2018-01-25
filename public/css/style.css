@@ -9,7 +9,7 @@ h1,h2,h3,h4,h5,h6
     font-family: 'Ubuntu', sans-serif;
     font-family: 'Quicksand', sans-serif;
 }
-p,button,a,input,label
+p,button,a,input,label,textarea,li
 {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Ubuntu', sans-serif;
@@ -428,4 +428,78 @@ element.style {
 {
     letter-spacing: 1px;
     
+}
+
+/* Chat */
+
+.chat
+{
+    margin-top: 2%;
+}
+.margin_padding_zero
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.chat_left
+{
+    background:rgba(12, 92, 136, 0.5);
+    min-height: 450px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    color: whitesmoke;
+
+}
+.chat_left .list-group-item
+{
+   padding: 5px 15px;
+
+}
+.chat_left .list-group-item-success
+{
+   color: #3a5d6f;
+
+}
+.chat_right
+{ 
+    padding: 4%;
+    min-height: 450px;
+    background:rgba(61, 98, 117, 0.92);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: whitesmoke;
+}
+.right_inside
+{
+    background-color:#576c77;
+    min-height: 370px;
+    border-radius:3px; 
+    padding: 3%;
+}
+.message textarea
+{
+    border-bottom-right-radius: 0% !important;
+    border-top-right-radius: 0% !important;
+    border: none;
+    background-color:whitesmoke;
+}
+.message button
+{
+    border-bottom-left-radius: 0% !important;
+    border-top-left-radius: 0% !important;
+    border: none;
+    background-color: #1d2733;
+}
+.message button:hover,:focus
+{
+  
+    background-color: #1d2733;
+}
+.message button:focus
+{
+  
+    background-color: #1d2733;
 }
