@@ -15,110 +15,148 @@ var secretToken;
 
 var value = "hi";
 
-router.get('/signup-supervisor/:secretToken/:email', (req, res, next) => {
+// router.get('/signup-supervisor/:secretToken/:email', (req, res, next) => {
         
-        secretToken = req.params.secretToken;
-        emailId = req.params.email;
-        if(secretToken != value)
-        {
-            var invite = Invite.findOne({'secretToken' : secretToken.trim()}).then((invite) => 
-            {      
-                    if(!invite)
-                    {
-                        //req.flash('errors', 'No user found');
-                        //res.redirect('/users/verify-error');
-                        res.render('errors');
-                        return;
-                    }
+//         secretToken = req.params.secretToken;
+//         emailId = req.params.email;
+//         if(secretToken != value)
+//         {
+//             var invite = Invite.findOne({'secretToken' : secretToken.trim()}).then((invite) => 
+//             {      
+//                     if(!invite)
+//                     {
+//                         //req.flash('errors', 'No user found');
+//                         //res.redirect('/users/verify-error');
+//                         res.render('errors');
+//                         return;
+//                     }
                     
-                    function decrypt(text){
-                      var decipher = crypto.createDecipher(algorithm,password)
-                      var dec = decipher.update(text,'hex','utf8')
-                      dec += decipher.final('utf8');
-                      return dec;
-                    }
-                    decryptedEmail = decrypt(emailId);
+//                     function decrypt(text){
+//                       var decipher = crypto.createDecipher(algorithm,password)
+//                       var dec = decipher.update(text,'hex','utf8')
+//                       dec += decipher.final('utf8');
+//                       return dec;
+//                     }
+//                     decryptedEmail = decrypt(emailId);
             
                     
-                    invite.secretToken = '';
-                    invite.save();
-                    res.render('accounts/signup-supervisor', {errorMessage : req.flash('errors')});
+//                     invite.secretToken = '';
+//                     invite.save();
+//                     res.render('accounts/signup-supervisor', {errorMessage : req.flash('errors')});
                     
-                    value = secretToken;
+//                     value = secretToken;
                 
-            });
-        }
-        else
-        {
-            //req.flash('errors','Link already used');
-            //res.redirect('/users/login');
-            res.render('errors');
-        }
-    })
-router.post('/signup-supervisor',(req, res, next) => 
-    {
-        Supervisor.findOne({email: req.body.email}, function(err, existingUser){
-           if(existingUser){
-               req.flash('errors', 'Email address already exists try different one!!');
-               res.redirect('/signup-supervisor');
+//             });
+//         }
+//         else
+//         {
+//             //req.flash('errors','Link already used');
+//             //res.redirect('/users/login');
+//             res.render('errors');
+//         }
+//     })
+// router.post('/signup-supervisor',(req, res, next) => 
+//     {
+//         Supervisor.findOne({ username : req.body.username}, function(err, existingUser){
+         
+//            if(existingUser){
+//              console.log("exists");
+//                req.flash('errors', 'User name already exists!');
+//              //  res.render('accounts/signup-supervisor');
+//                return res.redirect(`/signup-supervisor/${value}/${decryptedEmail}`);
                
-           }
-           else{
-                var supervisor = new Supervisor();
-                supervisor.name = req.body.name;
-                supervisor.email = decryptedEmail;
-                supervisor.username = req.body.username;
-                supervisor.password = req.body.password;  
-                //user.secretToken = req.body.secretToken;            
-                supervisor.save(function(err){
-                    // req.logIn(user, function(err){
-                        if(err) return next(err);
-                        res.redirect('/');
-                    // });
-                });
-                console.log('Signup data uploaded');
-           }
-       });
-    //    Supervisor.findOne({username: req.body.username}, function(err, existingUser){
-    //     if(existingUser){
-    //         req.flash('errors', 'Username already exists try different one!!');
-    //         res.redirect('/signup-supervisor');
-    //     }else{
-    //         var supervisor = new Supervisor();
-    //         supervisor.name = req.body.name;
-    //         supervisor.email = req.body.email;
-    //         supervisor.username = req.body.username;
-    //         supervisor.password = req.body.password;  
-    //         //user.secretToken = req.body.secretToken;            
-    //         supervisor.save(function(err){
-    //             // req.logIn(user, function(err){
-    //                 if(err) return next(err);
-    //                 res.redirect('/login-supervisor');
-    //             // });
-    //         });
-    //     }
-    // });
-    // User.findOne({secretToken: req.body.secretToken}, function(err, existingUser){
-    //     if(existingUser){
-    //         req.flash('errors', 'You are not eligible to register here');
-    //         res.redirect('/signup');
-    //     }else{
-    //          var user = new User();
-    //          user.name = req.body.name;
-    //          user.email = req.body.email;
-    //          user.username = req.body.username;
-    //          user.password = req.body.password;  
-    //          user.secretToken = req.body.secretToken;            
-    //          user.save(function(err){
-    //              // req.logIn(user, function(err){
-    //                  if(err) return next(err);
-    //                  res.redirect('/');
-    //              // });
-    //          });
-    //     }
-    // });
+//            }
+           
+//            else{
+//             console.log(" not exists");
+//                 var supervisor = new Supervisor();
+//                 supervisor.name = req.body.name;
+//                 supervisor.email = decryptedEmail;
+//                 supervisor.username = req.body.username;
+//                 supervisor.password = req.body.password;  
+//                 //user.secretToken = req.body.secretToken;            
+//                 supervisor.save(function(err){
+//                     // req.logIn(user, function(err){
+//                         if(err) return next(err);
+//                         res.redirect('/');
+//                     // });
+//                 });
+//                 console.log('Signup data uploaded');
+//            }
+//        });
+    
 
-    });
+//     });
+
+
+
+
+
+router.get('/signup-supervisor/:secretToken/:email', (req, res, next) => {
+  emailId = req.params.email;
+  secretToken = req.params.secretToken;
+  decryptedEmail = decrypt(emailId);
+  
+  console.log('encrypted email: ',emailId);
+  console.log('email: ',decryptedEmail);
+  console.log('token: ',secretToken);
+
+  function decrypt(text){
+    var decipher = crypto.createDecipher(algorithm,password)
+    var dec = decipher.update(text,'hex','utf8')
+    dec += decipher.final('utf8');
+    return dec;
+  }
+
+  Supervisor.findOne({ secretToken : secretToken }, function(err, user) {
+    
+        
+      if (user) {
+        console.log("Link damaged");
+        return res.render('errors');
+        
+      }
+      res.render('accounts/signup-supervisor', {errorMessage : req.flash('errors')});
+  });
+});
+router.post('/signup-supervisor',(req, res, next) => 
+{
+  Supervisor.findOne({ username : req.body.username}, function(err, existingUser){
+   
+     if(existingUser){
+       console.log("exists");
+         req.flash('errors', 'User name already exists!');
+       //  res.render('accounts/signup-supervisor');
+         return res.redirect(`/signup-supervisor/${secretToken}/${emailId}`);
+         
+     }
+     
+     else{
+      console.log(" not exists");
+          var supervisor = new Supervisor();
+          supervisor.name = req.body.name;
+          supervisor.email = decryptedEmail;
+          supervisor.username = req.body.username;
+          supervisor.password = req.body.password;  
+          supervisor.secretToken = secretToken;            
+          supervisor.save(function(err){
+              // req.logIn(user, function(err){
+                  if(err) return next(err);
+                  res.redirect('/');
+              // });
+          });
+          console.log('Signup data uploaded');
+     }
+ });
+
+
+});
+
+
+
+
+
+
 
 router.route('/login-supervisor')
     .get( (req, res, next) => {

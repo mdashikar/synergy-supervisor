@@ -1,19 +1,20 @@
 
 <div class="container-fluid back_color already_account">
+    {{#if errorMessage}}
+                        <div class="alertbox col-md-offset-4 col-md-4 alert alert-danger alert-dismissible" role="alert">
+                            <button id="disbtn" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span class="pull-right" aria-hidden="true">x</span>
+                            </button>
+                            <strong class="text-center">{{errorMessage}}</strong> 
+                            
+                        </div>
+                    {{/if}}
  
 <!------------------------------------Sign Up-------------------------------->
 
             <div class="container-fluid signup">
                 <div class="container">      
                     <div class="row">
-                        {{#if errorMessage}}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <strong>Some Error</strong> {{ errorMessage}}
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                        {{/if}}
                         
                         <div class="col-md-2 col-sm-12">
 
