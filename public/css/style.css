@@ -417,6 +417,7 @@ element.style {
 .alertbox
 {
  border-radius: 6px; 
+ margin-top: 4%;
 }
 /* profile */
 .profile
@@ -428,4 +429,12 @@ element.style {
 {
     letter-spacing: 1px;
     
+}
+
+.center {text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
+.center h1{
+    color: #fff;
+}
+.center p{
+    color: #fff;
 }
