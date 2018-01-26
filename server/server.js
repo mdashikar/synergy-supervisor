@@ -103,6 +103,34 @@ app.use(mainroutes);
 app.use(supervisorroutes);
 
 
+
+app.get("/board/:id/chat", (req, res) => {
+  function getChats(callback) {
+    // check connection
+    if (mongoose.connection.readyState === 0) {
+      mongoose.connect(config.database, { useMongoClient: true });
+    }
+
+    let LIMIT = 50;
+    let query;
+
+    query = Chat.find({})
+      .sort({ when: -1 }) // latest first
+      .limit(LIMIT);
+
+    query.exec((err, chats) => {
+      if (err) console.error(err);
+
+      callback(chats);
+    });
+  }
+
+  getChats(chats => {
+    res.render('main/single_board', {chats: chats});
+    console.log(chats);
+  });
+});
+
 http.listen(port, (err) => {
     if(err){
         console.log(err);

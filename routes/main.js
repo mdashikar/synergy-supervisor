@@ -45,7 +45,7 @@ router.get('/board/:id', (req, res, next) => {
 
 router.route('/todo')
     .get((req,res,next) => {
-        res.render('/accounts/todo');
+        res.render('accounts/todo');
 
     })
     .post((req,res,next) => {
