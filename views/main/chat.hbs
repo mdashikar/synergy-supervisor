@@ -43,30 +43,27 @@
                                 
                             </div>
                     
-                            <ul class="chat-ul">
-                    
-                                <div v-for="m in messages">
-                    
-                                    <li v-if="m.by === currentUser">
-                                        <h3>
-                                            <i class="fa fa-circle"></i> \{{ m.by }}</h3>
-                                        <p> \{{ m.text }} </p>
-                                        <div class="gray"> \{{ humanReadable(m.when) }} </div>
-                                    </li>
-                    
+                                <div v-for="m in messages" class="list-group">                              
+                                        <a v-if="m.by === currentUser" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">
+                                                    <i class="fa fa-user"></i> \{{m.by}}</h5>
+                                                <small class="pull-right">\{{ humanReadable(m.when) }}</small>
+                                            </div>
+                                            <p class="mb-1">\{{m.text}}</p>
+                                        </a>
+{{!--                     
                                     <li v-else>
                                         <h3>\{{ m.by }}
                                             <i class="fa fa-circle"></i>
                                         </h3>
                                         <p> \{{ m.text }} </p>
                                         <div class="gray"> \{{ humanReadable(m.when) }} </div>
-                                    </li>
+                                    </li> --}}
                     
                                     <br>
                                 </div>
-                    
-                            </ul>
-                    
+
                         </div>
                         <!-- end chat-history -->
                     </div>
