@@ -2,10 +2,38 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {{> navbar}}
 
+<!---------------------------------Side bar-------------------------------->
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                <div id="mySidenav" class="sidenav pull-right">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <h4 class="text-center">Menu</h4>
+                  <hr>
+                  <a href=""><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;Chat Channel</a>
+                  <hr>
+                  <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Project Description</a>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quam excepturi voluptatem atque assumenda repellendus quia deleniti at molestias dolor quisquam itaque consequatur modi quis, iusto, illo tempora officia saepe?</p>
+                    <hr>
+
+                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member</a>
+
+                    <a href="">&nbsp;&nbsp;Gazi Muhammad Akil</a>
+                    <a href="">&nbsp;&nbsp;Adil Ahmed Chowdhury</a>
+                    <a href="">&nbsp;&nbsp;Md. Ashiqur Rahman</a>
+                    <a href="">&nbsp;&nbsp;Ahnaf Ar Rafi</a>
+
+                   
+
+                 </div>  
+                </div>  
+            </div>
+        </div>
+        <br>
+        <span class="pull-right" style="color: darkgray; font-size:15px;cursor:pointer" onclick="openNav()"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Show Menu&nbsp;&nbsp;&nbsp;</span> 
+        
+
 <!---------------------------------Vue Code-------------------------------->
- <div class="container">
-        <div class="row">
-                <div class="col-md-6">
 <main id="todolist">
     <h1>
         Todo List 
@@ -37,56 +65,6 @@
         <button type="submit">Add item</button>
     </form>
 </main>
-</div>
-
-
-
-    <div class="col-md-6 chat">
-       
-       
-        <div class="row">
-            <div class="col-md-5 chat_left">
-               <h3><i class="fa fa-users" aria-hidden="true"></i>&nbsp;People</h3>
-               <hr>
-               <p>&nbsp;online</p>
-               <ul class="list-group">
-                  <li class="list-group-item list-group-item-success"><strong>Gazi Muhammad Akil</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Adil Chowdhury</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Md. Ashik</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Ahnaf Ar Rafi</strong></li>
-                  <br>
-                </ul>
-                
-            </div>
-            <div class="col-md-7 chat_right">
-               <div class="row">
-                   <div class="col-md-12 right_inside">
-                       
-                   </div>
-               </div> 
-               
-               <div class="row message">
-                   <div class="col-md-8 margin_padding_zero">
-                       <textarea class="form-control" name="" id="" rows="1" placeholder="Text message..."></textarea>
-                   </div>
-                   <div class="col-md-4 margin_padding_zero">
-                       <button class="btn btn-success btn-block">
-                           Send
-                       </button>
-                   </div>
-               </div> 
-            </div>
-        </div>
-        
-        
-        
-        
-            </div>
-        </div>    
-    </div>
 
 
 

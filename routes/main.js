@@ -42,9 +42,13 @@ router.get('/board/:id', (req, res, next) => {
     res.render('main/single_board', {title: 'Dont know'});
 });
 
+router.get('/chat-pannel', (req,res,next) => {
+    res.render('main/chat', {title: 'chat'});
+});
+
 router.route('/todo')
     .get((req,res,next) => {
-        res.render('/accounts/todo');
+        res.render('accounts/todo');
 
     })
     .post((req,res,next) => {
