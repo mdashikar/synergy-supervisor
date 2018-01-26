@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Supervisor = require('../models/supervisor');
 const _ = require('lodash');
 const {ProjectSubmit} = require('../models/proposals');
+const Todo = require('../models/todo');
 const passport = require('passport');
 const randomstring = require('randomstring');
 const passportConfig = require('../config/passport');
@@ -42,13 +43,21 @@ router.get('/board/:id', (req, res, next) => {
     res.render('main/single_board', {title: 'Chat and Task'});
 });
 
+router.route('/todo')
+    .get((req,res,next) => {
+        res.render('/accounts/todo');
 
-// router.get('/test', (req,res,next) => {
-//     RegisteredStudent.find({}).then((registered) => {
-//         res.send(registered);
-
-//     });
-// });
-
+    })
+    .post((req,res,next) => {
+        var todo = new Todo();
+        todo.label = req.body.label;
+        todo.done = true;
+        todo.save(function(err){
+            // req.logIn(user, function(err){
+                if(err) return next(err);
+                res.redirect('/');
+            // });
+        });
+    });
 
 module.exports = router;
