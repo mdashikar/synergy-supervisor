@@ -1,41 +1,63 @@
 const async = require('async');
 const Supervisor = require('../models/supervisor');
+const config = require('../config/secret');
+var Chat = require('../models/chat');
+const mongoose = require("mongoose");
 
 module.exports = function(io){
     io.on('connection', function(socket){
-        console.log('Connected');
+    
         var user = socket.request.user;
         console.log(user);
-        socket.on('list', (data)=> {
-            async.parallel([
-                function(callback){
-                    io.emit('incommingList', {data, user});
-                },
-                function(callback){
-                    async.waterfall([
-                        function(callback){
-                            var list = new List();
-                            list.content = data.content;
-                            list.owner = user._id;
-                            list.save(function(err){
-                                callback(err, list);
-                            }) 
-                        },
-                        function(list, callback){
-                            User.update({
-                                _id : user._id
-                            },
-                            {
-                                $push: {boards:{ list: list._id}},
-                            }, function(err, count){
-                                callback(err, count);
-                            }
-                        )
-                        }
-                    ]);
-                }
-            ]);
-            
+        socket.emit('user', user);
+        // register listener on server
+        socket.on("chatChannel", function(chat) {
+                // send to all registeres
+                io.emit("chatChannel", chat);
+                // todo save it
+                console.log(chat);
+                insertChat(chat);
+            });
+        
         });
-    });
-}
+        
+
+        /**
+         * saves the chat item
+         */
+        function insertChat(chat) {
+        if (mongoose.connection.readyState == 0) {
+            mongoose.connect(config.database, { useMongoClient: true });
+        }
+
+        chat.when = new Date();
+        var chat = new Chat(chat);
+
+        chat.save((err, chat) => {
+            if (err) console.error(err);
+        });
+        }
+
+        /**
+         * return some chat history
+         */
+        function getChats(callback) {
+        // check connection
+        if (mongoose.connection.readyState === 0) {
+            mongoose.connect(config.database, { useMongoClient: true });
+        }
+
+        let LIMIT = 50;
+        let query;
+
+        query = Chat.find({})
+            .sort({ when: -1 }) // latest first
+            .limit(LIMIT);
+
+        query.exec((err, chats) => {
+            if (err) console.error(err);
+
+            callback(chats);
+        });
+    };
+};

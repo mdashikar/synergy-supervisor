@@ -1,11 +1,12 @@
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 {{> navbar}}
 
 <!---------------------------------Vue Code-------------------------------->
  <div class="container">
         <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
 <main id="todolist">
     <h1>
         Todo List 
@@ -41,40 +42,72 @@
 
 
 
-    <div class="col-md-6 chat">
+    <div class="col-md-8 chat"  id="app">
        
        
         <div class="row">
-            <div class="col-md-5 chat_left">
-               <h3><i class="fa fa-users" aria-hidden="true"></i>&nbsp;People</h3>
+            <div class="col-md-4 chat_left">
+               <h3><i class="fa fa-users fa-lg" aria-hidden="true"></i>&nbsp;People</h3>
                <hr>
-               <p>&nbsp;online</p>
+               <p>&nbsp;Online</p>
                <ul class="list-group">
-                  <li class="list-group-item list-group-item-success"><strong>Gazi Muhammad Akil</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Adil Chowdhury</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Md. Ashik</strong></li>
-                  <br>
-                  <li class="list-group-item list-group-item-success"><strong>Ahnaf Ar Rafi</strong></li>
-                  <br>
+                  
+                  <li class="list-group-item list-group-item-success"><strong>\{{currentUser}}</strong></li>
+
                 </ul>
                 
             </div>
-            <div class="col-md-7 chat_right">
+            <div class="col-md-8 chat_right">
                <div class="row">
                    <div class="col-md-12 right_inside">
-                       
+                        <div class="chat" >
+                            <div class="chat-history">
+                        
+                                <h1>
+                                    <i class="fa fa-comments fa-lg"></i> Chat Room</h1>
+                                <br>
+                                <hr>
+                                <br>
+                                
+                                <ul class="chat-ul">
+                        
+                                    <div v-for="m in messages">
+                        
+                                        <li v-if="m.by === currentUser">
+                                            <h3>
+                                                <i class="fa fa-circle"></i> \{{ m.by }}</h3>
+                                            <p> \{{ m.text }} </p>
+                                            <div class="gray"> \{{humanReadable(m.when) }} </div>
+                                        </li>
+                        
+                                        <li v-else>
+                                            <h3> \{{ m.by }}
+                                                <i class="fa fa-circle fa-2x"></i>
+                                            </h3>
+                                            <p> \{{ m.text }} </p>
+                                            <span class="gray pull-right"> \{{humanReadable(m.when) }} </span>
+                                        </li>
+                        
+                                        <br>
+                                    </div>
+                        
+                                </ul>
+                        
+                            </div>
+                            <!-- end chat-history -->
+    
+                        </div>
+
                    </div>
                </div> 
                
-               <div class="row message">
+               <div class="row message"  id="send">
                    <div class="col-md-8 margin_padding_zero">
-                       <textarea class="form-control" name="" id="" rows="1" placeholder="Text message..."></textarea>
+                       <input  autofocus id="msg" v-model="msg" autocomplete="off" class="form-control" placeholder="Chat here..." style="color:#FFF">
                    </div>
                    <div class="col-md-4 margin_padding_zero">
-                       <button class="btn btn-success btn-block">
-                           Send
+                       <button class="btn btn-success btn-md btn-block" v-on:click="send">
+                            <i class="fa fa-send fa-lg"></i> Send
                        </button>
                    </div>
                </div> 
@@ -88,19 +121,12 @@
         </div>    
     </div>
 
+    <!-- socketio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- momentjs lib -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2.18.1/moment.min.js"></script>
+<script src="js/master.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
 <script>
     Vue.component('togglebutton', {
@@ -171,6 +197,81 @@
                 }
             }
         });
+</script>
+
+<script>
+    let socket = io();
+    var username = '';
+
+    socket.on('user', function (data) {
+        console.log('Client side user data', data.username);
+        username = data.username;
+        let app = new Vue({
+            el: "#app",
+            data: {
+                currentUser: username,
+                msg: "",
+                messages: [],
+                socket: io()
+            },
+            created() {
+
+                // init code
+                console.log("created");
+                // register event listener
+                this.socket.on("chatChannel", chat => {
+                    console.log("received!");
+                    this.messages.push(chat);
+                    window.scrollTo(0, document.body.scrollHeight);
+                });
+
+                console.log("fetching chats...");
+                console.log("Username ", username);
+                this.fetchChat();
+            },
+            methods: {
+                /**
+                    * On click send button, sends the message to chat room
+                    */
+                send(event) {
+                    let message = this.msg.trim();
+                    let by = this.currentUser;
+
+                    if (message.length === 0) return;
+
+                    this.msg = "";
+                    console.log("sending");
+
+                    this.socket.emit("chatChannel", {
+                        text: message,
+                        by: by
+                    });
+                },
+
+                /**
+                    * fetches chat history from REST API
+                    */
+                fetchChat() {
+                    this.$http.get("/history").then(response => {
+                        if (response.body.length > 0) {
+                            // concatinate the reverse because the server sent the latest few in reverse order
+                            this.messages = this.messages.concat(response.body.reverse());
+                        }
+                    }, err => {
+                        console.error(err);
+                    });
+                },
+                humanReadable(date) {
+                    return moment(date).fromNow();
+                }
+            }
+        });
+
+    });
+
+
+
+
 </script>
 
 <style>
@@ -354,10 +455,6 @@ form button {
 
  /*Chat Channel*/
 
-.chat .fa
-{
-    font-size: 50px;
-}
 .chat a
 {
     color: darkgray;
