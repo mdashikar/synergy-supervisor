@@ -40,8 +40,14 @@ router.get('/demo-proposal', (req,res,next) => {
 });
 
 router.get('/board/:id', (req, res, next) => {
-    res.render('main/single_board', {title: 'Chat and Task'});
+    var id = req.params.id;
+    console.log(id);
+    res.render('main/single_board', {title: 'Chat and Task', id:id});
 });
+
+// router.get("/board/:id/chat-channel", (req, res, next) => {
+//   res.render("main/chat", { title: "Synergy - chat" });
+// });
 
 router.route('/todo')
     .get((req,res,next) => {

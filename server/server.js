@@ -104,14 +104,14 @@ app.use(supervisorroutes);
 
 
 
-app.get("/board/:id/chat", (req, res) => {
+app.get("/chat-channel", (req, res) => {
   function getChats(callback) {
     // check connection
     if (mongoose.connection.readyState === 0) {
       mongoose.connect(config.database, { useMongoClient: true });
     }
 
-    let LIMIT = 50;
+    let LIMIT = 10;
     let query;
 
     query = Chat.find({})
@@ -126,8 +126,8 @@ app.get("/board/:id/chat", (req, res) => {
   }
 
   getChats(chats => {
-    res.render('main/single_board', {chats: chats});
-    console.log(chats);
+    res.render('main/chat', {chats: chats});
+    console.log('Chat', chats);
   });
 });
 

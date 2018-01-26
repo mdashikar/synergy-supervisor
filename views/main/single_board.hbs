@@ -3,10 +3,39 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 {{> navbar}}
 
+<!---------------------------------Side bar-------------------------------->
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                <div id="mySidenav" class="sidenav pull-right">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <h4 class="text-center">Menu</h4>
+                  <hr>
+                  {{#if id}}
+                    
+                  <a href="/chat-channel"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;&nbsp;Chat Channel</a>
+                  {{/if}}
+                  <hr>
+                  <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Project Description</a>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quam excepturi voluptatem atque assumenda repellendus quia deleniti at molestias dolor quisquam itaque consequatur modi quis, iusto, illo tempora officia saepe?</p>
+                    <hr>
+
+                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member</a>
+                    <ul class="list-group">
+                        <li></li>
+                    </ul>
+
+                   
+
+                 </div>  
+                </div>  
+            </div>
+        </div>
+        <br>
+        <span class="pull-right" style="color: darkgray; font-size:15px;cursor:pointer" onclick="openNav()"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Show Menu&nbsp;&nbsp;&nbsp;</span> 
+        
+
 <!---------------------------------Vue Code-------------------------------->
- <div class="container">
-        <div class="row">
-                <div class="col-md-4">
 <main id="todolist">
     <h1>
         Todo List 
@@ -38,91 +67,6 @@
         <button type="submit">Add item</button>
     </form>
 </main>
-</div>
-
-
-
-    <div class="col-md-8 chat"  id="app">
-       
-       
-        <div class="row">
-            <div class="col-md-4 chat_left">
-               <h3><i class="fa fa-users fa-lg" aria-hidden="true"></i>&nbsp;People</h3>
-               <hr>
-               <p>&nbsp;Online</p>
-               <ul class="list-group">
-                  
-                  <li class="list-group-item list-group-item-success"><strong>\{{currentUser}}</strong></li>
-
-                </ul>
-                
-            </div>
-            <div class="col-md-8 chat_right">
-               <div class="row">
-                   <div class="col-md-12 right_inside">
-                        <div class="chat" >
-                            <div class="chat-history">
-                        
-                                <h1>
-                                    <i class="fa fa-comments fa-lg"></i> Chat Room</h1>
-                                <br>
-                                <hr>
-                                <br>
-                                {{#each chats}}
-                                    <li>{{this.by}}</li>
-                                {{/each}}
-                                
-                                <ul class="chat-ul">
-                        
-                                    <div v-for="m in messages">
-                        
-                                        <li v-if="m.by === currentUser">
-                                            <h3>
-                                                <i class="fa fa-circle"></i> \{{ m.by }}</h3>
-                                            <p> \{{ m.text }} </p>
-                                            <div class="gray"> \{{humanReadable(m.when) }} </div>
-                                        </li>
-                        
-                                        <li v-else>
-                                            <h3> \{{ m.by }}
-                                                <i class="fa fa-circle fa-2x"></i>
-                                            </h3>
-                                            <p> \{{ m.text }} </p>
-                                            <span class="gray pull-right"> \{{humanReadable(m.when) }} </span>
-                                        </li>
-                        
-                                        <br>
-                                    </div>
-                        
-                                </ul>
-                        
-                            </div>
-                            <!-- end chat-history -->
-    
-                        </div>
-
-                   </div>
-               </div> 
-               
-               <div class="row message"  id="send">
-                   <div class="col-md-8 margin_padding_zero">
-                       <input  autofocus id="msg" v-model="msg" autocomplete="off" class="form-control" placeholder="Chat here..." style="color:#FFF">
-                   </div>
-                   <div class="col-md-4 margin_padding_zero">
-                       <button class="btn btn-success btn-md btn-block" v-on:click="send">
-                            <i class="fa fa-send fa-lg"></i> Send
-                       </button>
-                   </div>
-               </div> 
-            </div>
-        </div>
-        
-        
-        
-        
-            </div>
-        </div>    
-    </div>
 
     <!-- socketio -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
@@ -306,7 +250,7 @@
 #todolist {
 	margin:4rem auto;
 	padding:2rem 3rem 3rem;
-	max-width:500px;
+	max-width:600px;
 	background: #373f46;
 	color:#FFF;
 	box-shadow:-20px -20px 0px 0px rgba(100,100,100,.1);
@@ -393,13 +337,12 @@ form label {
 	font-size:1.3rem;
 }
 form input {
-    color:black;
+    color:#fff;
 	flex-grow:1;
 	border:none;
 	background:#f7f1f1;
 	padding:0 1.5em;
 	font-size:initial;
-    color: black;
 }
 form button {
 	padding:0 1.3rem;
