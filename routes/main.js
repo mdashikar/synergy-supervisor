@@ -6,6 +6,7 @@ const Todo = require('../models/todo');
 const passport = require('passport');
 const randomstring = require('randomstring');
 const passportConfig = require('../config/passport');
+const Chat = require("../models/chat");
 //const RegisteredStudent = require('../models/registered_user');
 // var template = require('../server/template');
 // var upload = require('../server/upload');
@@ -39,7 +40,7 @@ router.get('/demo-proposal', (req,res,next) => {
 });
 
 router.get('/board/:id', (req, res, next) => {
-    res.render('main/single_board', {title: 'Dont know'});
+    res.render('main/single_board', {title: 'Chat and Task'});
 });
 
 router.get('/chat-pannel', (req,res,next) => {

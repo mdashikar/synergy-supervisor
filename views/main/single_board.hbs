@@ -1,5 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 {{> navbar}}
 
 <!---------------------------------Side bar-------------------------------->
@@ -66,19 +67,12 @@
     </form>
 </main>
 
+    <!-- socketio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- momentjs lib -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2.18.1/moment.min.js"></script>
+<script src="js/master.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
 <script>
     Vue.component('togglebutton', {
@@ -149,6 +143,81 @@
                 }
             }
         });
+</script>
+
+<script>
+    let socket = io();
+    var username = '';
+
+    socket.on('user', function (data) {
+        console.log('Client side user data', data.username);
+        username = data.username;
+        let app = new Vue({
+            el: "#app",
+            data: {
+                currentUser: username,
+                msg: "",
+                messages: [],
+                socket: io()
+            },
+            created() {
+
+                // init code
+                console.log("created");
+                // register event listener
+                this.socket.on("chatChannel", chat => {
+                    console.log("received!");
+                    this.messages.push(chat);
+                    window.scrollTo(0, document.body.scrollHeight);
+                });
+
+                console.log("fetching chats...");
+                console.log("Username ", username);
+                this.fetchChat();
+            },
+            methods: {
+                /**
+                    * On click send button, sends the message to chat room
+                    */
+                send(event) {
+                    let message = this.msg.trim();
+                    let by = this.currentUser;
+
+                    if (message.length === 0) return;
+
+                    this.msg = "";
+                    console.log("sending");
+
+                    this.socket.emit("chatChannel", {
+                        text: message,
+                        by: by
+                    });
+                },
+
+                /**
+                    * fetches chat history from REST API
+                    */
+                fetchChat() {
+                    this.$http.get("/history").then(response => {
+                        if (response.body.length > 0) {
+                            // concatinate the reverse because the server sent the latest few in reverse order
+                            this.messages = this.messages.concat(response.body.reverse());
+                        }
+                    }, err => {
+                        console.error(err);
+                    });
+                },
+                humanReadable(date) {
+                    return moment(date).fromNow();
+                }
+            }
+        });
+
+    });
+
+
+
+
 </script>
 
 <style>
@@ -332,10 +401,6 @@ form button {
 
  /*Chat Channel*/
 
-.chat .fa
-{
-    font-size: 50px;
-}
 .chat a
 {
     color: darkgray;

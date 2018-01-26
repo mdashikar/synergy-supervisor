@@ -13,6 +13,7 @@ const passportSocketIo = require('passport.socketio');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const config = require('../config/secret');
+var Chat = require('../models/chat');
 var fileUpload = require('express-fileupload');
 
 const sessionStore = new MongoStore({url: config.database, autoReconnect: true});
@@ -94,8 +95,13 @@ io.on('connection', function(socket){
     console.log('a user connected');
 });
 
+// app.get("/chat", (req, res) => {
+//   res.sendFile(path.join(__dirname, '../public/index.html'));
+// });
+
 app.use(mainroutes);
 app.use(supervisorroutes);
+
 
 http.listen(port, (err) => {
     if(err){
