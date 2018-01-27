@@ -17,12 +17,38 @@
                   {{/if}}
                   <hr>
                   <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Project Description</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quam excepturi voluptatem atque assumenda repellendus quia deleniti at molestias dolor quisquam itaque consequatur modi quis, iusto, illo tempora officia saepe?</p>
+                    <p>{{project.projectAbstract}}</p>
                     <hr>
 
-                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member</a>
+                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member Name</a>
                     <ul class="list-group">
-                        <li></li>
+                        {{#each project.memberName}}
+                            <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+
+                    <a href="">
+                        <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member Id</a>
+                    <ul class="list-group">
+                        {{#each project.memberId}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+
+                    <a href="">
+                        <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member Email</a>
+                    <ul class="list-group">
+                        {{#each project.memberEmail}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                    </ul>
+
+                    <a href="">
+                        <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Board member Number</a>
+                    <ul class="list-group">
+                        {{#each project.memberNumber}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
                     </ul>
 
                    

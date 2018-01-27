@@ -42,7 +42,18 @@ router.get('/demo-proposal', (req,res,next) => {
 router.get('/board/:id', (req, res, next) => {
     var id = req.params.id;
     console.log(id);
-    res.render('main/single_board', {title: 'Chat and Task', id:id});
+     ProjectSubmit.findOne({ _id: id }).then(project => {
+       console.log("inside: ", project);
+       res.render("main/single_board", {
+         title: "Project Board",
+         project: project,
+         id:id,
+         errorMessage: req.flash("errors"),
+         successMessage: req.flash("success")
+       });
+     });
+
+    
 });
 
 // router.get("/board/:id/chat-channel", (req, res, next) => {
